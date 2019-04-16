@@ -1,27 +1,34 @@
 package com.akshayfaye.noteit
 
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.View
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    val noteArrayList: ArrayList<String> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
+
+        addNotes()
+
+        note_rv_list.layoutManager = LinearLayoutManager(this)
+        note_rv_list.adapter = NoteAdapter(noteArrayList, this)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -41,5 +48,26 @@ class MainActivity : AppCompatActivity() {
             true
         } else super.onOptionsItemSelected(item)
 
+    }
+
+    private fun addNotes() {
+        noteArrayList.add("123")
+        noteArrayList.add("234")
+        noteArrayList.add("456")
+        noteArrayList.add("1233")
+        noteArrayList.add("2343")
+        noteArrayList.add("4563")
+        noteArrayList.add("1234")
+        noteArrayList.add("2344")
+        noteArrayList.add("4564")
+        noteArrayList.add("123")
+        noteArrayList.add("234")
+        noteArrayList.add("456")
+        noteArrayList.add("1233")
+        noteArrayList.add("2343")
+        noteArrayList.add("4563")
+        noteArrayList.add("1234")
+        noteArrayList.add("2344")
+        noteArrayList.add("4564")
     }
 }
