@@ -1,7 +1,9 @@
 package com.akshayfaye.noteit
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 
 class NoteViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
+
+
 }
