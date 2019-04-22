@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.note_list_item.view.*
 
-class NoteAdapter (private val noteArrayList: ArrayList<String>, private val context: Context?) : RecyclerView.Adapter<NoteAdapter.ViewHolder>(){
+class NoteAdapter (private val noteArrayList: List<NoteEntity>, private val context: Context?) : RecyclerView.Adapter<NoteAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.note_list_item, parent, false))
@@ -18,7 +18,7 @@ class NoteAdapter (private val noteArrayList: ArrayList<String>, private val con
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvNote?.text = noteArrayList.get(position)
+        holder.tvNote?.text = noteArrayList.get(position).title
     }
 
     class ViewHolder (view: View) : RecyclerView.ViewHolder(view){

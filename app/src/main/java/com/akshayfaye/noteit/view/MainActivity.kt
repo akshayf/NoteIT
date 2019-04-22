@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.akshayfaye.noteit.NoteViewModel
 import com.akshayfaye.noteit.R
+import com.akshayfaye.noteit.Utility.noteId
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -18,47 +19,30 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        fab.setOnClickListener {view ->
+
+            jumpToNoteDetailsFragment(noteId)
         }
 
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.itemId
-
-
-        return if (id == R.id.action_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
+        jumpToNoteListFragment();
 
     }
 
-    fun jumpToNoteListFragment(){
+    private fun jumpToNoteListFragment(){
 
-        var fragmentManager = supportFragmentManager
+        val fragmentManager = supportFragmentManager
         fragmentManager
                 .beginTransaction()
                 .replace(R.id.fragment_container, NoteListFragment.newInstance())
                 .commit()
     }
 
-    fun jumpToNoteDetailsFragment(){
+    private fun jumpToNoteDetailsFragment(noteId : Int){
 
-        var fragmentManager = supportFragmentManager
+        val fragmentManager = supportFragmentManager
         fragmentManager
                 .beginTransaction()
-                .replace(R.id.fragment_container, NoteDetailsFragment.newInstance())
+                .replace(R.id.fragment_container, NoteDetailsFragment.newInstance(noteId))
                 .commit()
     }
 }
